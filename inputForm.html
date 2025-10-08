@@ -1,60 +1,359 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>WDV101 Intro HTML and CSS</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Hunter Lovan">
+    <meta name="version" content="1.0">
+    <meta name="description" content="Professional contact form. Educational purposes only.">
+    <meta name="disclaimer" content="This code is for educational purposes only.">
 
-<style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Professional Business Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-	form	{
-		width:600px;
-		margin:auto;
-		background-color:lightblue;	
-		padding-left: 20px;
-	}
-	
-	form legend	{
-		font-size:larger;
-		text-align:center;
-	}
-	
-	
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
 
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
 
-</style>
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
 
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .form-section {
+            padding: 40px;
+        }
+
+        .form-intro {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-intro h2 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .form-intro p {
+            color: #666;
+            font-size: 1.1em;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            font-family: inherit;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        .btn-group {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            margin: 0 10px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+        }
+
+        .btn-submit:hover {
+            background: linear-gradient(135deg, #229954, #27ae60);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+        }
+
+        .btn-reset {
+            background: linear-gradient(135deg, #95a5a6, #bdc3c7);
+            color: white;
+        }
+
+        .btn-reset:hover {
+            background: linear-gradient(135deg, #7f8c8d, #95a5a6);
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 10px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .form-section {
+                padding: 30px 20px;
+            }
+            
+            .btn {
+                display: block;
+                width: 100%;
+                margin: 10px 0;
+            }
+        }
+    </style>
 </head>
 
 <body>
-<h1>WDV101 Intro HTML and CSS</h1>
-<h2>UNIT 5 - Lesson 2 Server Side Forms</h2>
-<p>This is an example input form that will demonstrate how a form connects to a server side process.</p>
-<form id="form1" name="form1" method="post" action="formHandler.php">
+    <div class="container">
+        <div class="header">
+            <h1>Contact Us</h1>
+            <p>Professional Business Services - We're Here to Help</p>
+        </div>
 
-  <legend>Example Form</legend>
-  
-  <p>
-  	<label for="first_name">First Name:</label> 
-    <input type="text" name="first_name" id="first_name" />
-  </p>
-  
-  <p>
-  	<label for="last_name">Last Name:</label> 
-    <input type="text" name="last_name" id="last_name" />
-  </p>
-  
-  <p>
-  	<label for="school_name">School Name:</label> 
-    <input type="text" name="school_name" id="school_name" />
-  </p>
-  
-  <p>
-    <input type="submit" name="button" id="button" value="Submit" />
-    <input type="reset" name="button2" id="button2" value="Reset" />
-  </p>
-  
-</form>
+        <div class="form-section">
+            <div class="form-intro">
+                <h2>Get in Touch</h2>
+                <p>We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
+            </div>
 
-<p>&nbsp;</p>
+            <form class="contact-form" id="contactForm" method="post" action="formHandler.php" novalidate>
+                <div class="form-group">
+                    <label for="contact_name">Contact Name: <span class="required">*</span></label>
+                    <input type="text" name="contact_name" id="contact_name" required>
+                    <div class="error-message" id="name_error">Please enter your full name</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="contact_email">Contact Email Address: <span class="required">*</span></label>
+                    <input type="email" name="contact_email" id="contact_email" required>
+                    <div class="error-message" id="email_error">Please enter a valid email address</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="contact_reason">Reason for Contact: <span class="required">*</span></label>
+                    <select name="contact_reason" id="contact_reason" required>
+                        <option value="">Please select a reason</option>
+                        <option value="General Inquiry">General Inquiry</option>
+                        <option value="Product Information">Product Information</option>
+                        <option value="Technical Support">Technical Support</option>
+                        <option value="Sales Question">Sales Question</option>
+                        <option value="Partnership Opportunity">Partnership Opportunity</option>
+                        <option value="Complaint">Complaint</option>
+                        <option value="Feedback">Feedback</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <div class="error-message" id="reason_error">Please select a reason for contact</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="comments">Comments: <span class="required">*</span></label>
+                    <textarea name="comments" id="comments" placeholder="Please provide details about your inquiry..." required></textarea>
+                    <div class="error-message" id="comments_error">Please enter your comments or questions</div>
+                </div>
+
+                <div class="btn-group">
+                    <button type="submit" class="btn btn-submit">Send Message</button>
+                    <button type="reset" class="btn btn-reset">Clear Form</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 Professional Business Services. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            let isValid = true;
+            
+            // Clear previous errors
+            const errorMessages = document.querySelectorAll('.error-message');
+            errorMessages.forEach(msg => msg.style.display = 'none');
+            
+            // Validate name
+            const name = document.getElementById('contact_name').value.trim();
+            if (name.length < 2) {
+                document.getElementById('name_error').style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate email
+            const email = document.getElementById('contact_email').value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                document.getElementById('email_error').style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate reason
+            const reason = document.getElementById('contact_reason').value;
+            if (reason === '') {
+                document.getElementById('reason_error').style.display = 'block';
+                isValid = false;
+            }
+            
+            // Validate comments
+            const comments = document.getElementById('comments').value.trim();
+            if (comments.length < 10) {
+                document.getElementById('comments_error').textContent = 'Please provide at least 10 characters in your comments';
+                document.getElementById('comments_error').style.display = 'block';
+                isValid = false;
+            }
+            
+            if (!isValid) {
+                e.preventDefault();
+            }
+        });
+
+        // Real-time validation feedback
+        document.getElementById('contact_name').addEventListener('blur', function() {
+            const name = this.value.trim();
+            const errorMsg = document.getElementById('name_error');
+            if (name.length < 2) {
+                errorMsg.style.display = 'block';
+                this.style.borderColor = '#e74c3c';
+            } else {
+                errorMsg.style.display = 'none';
+                this.style.borderColor = '#27ae60';
+            }
+        });
+
+        document.getElementById('contact_email').addEventListener('blur', function() {
+            const email = this.value.trim();
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            const errorMsg = document.getElementById('email_error');
+            if (!emailRegex.test(email)) {
+                errorMsg.style.display = 'block';
+                this.style.borderColor = '#e74c3c';
+            } else {
+                errorMsg.style.display = 'none';
+                this.style.borderColor = '#27ae60';
+            }
+        });
+
+        document.getElementById('contact_reason').addEventListener('change', function() {
+            const errorMsg = document.getElementById('reason_error');
+            if (this.value === '') {
+                errorMsg.style.display = 'block';
+                this.style.borderColor = '#e74c3c';
+            } else {
+                errorMsg.style.display = 'none';
+                this.style.borderColor = '#27ae60';
+            }
+        });
+
+        document.getElementById('comments').addEventListener('blur', function() {
+            const comments = this.value.trim();
+            const errorMsg = document.getElementById('comments_error');
+            if (comments.length < 10) {
+                errorMsg.textContent = 'Please provide at least 10 characters in your comments';
+                errorMsg.style.display = 'block';
+                this.style.borderColor = '#e74c3c';
+            } else {
+                errorMsg.style.display = 'none';
+                this.style.borderColor = '#27ae60';
+            }
+        });
+    </script>
 </body>
-
 </html>
