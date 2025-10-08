@@ -54,7 +54,7 @@ use PHPMailer\PHPMailer\Exception;
 
 /**
  * Send email using PHPMailer
- * 
+ * todo: setup corresponding in the web host (still cannot get it to work)
  * @param string $to Recipient email address
  * @param string $subject Email subject
  * @param string $body Email body (can be HTML)
@@ -219,4 +219,5 @@ function sendAdminNotification($adminEmail, $formData) {
     
     return sendEmail($adminEmail, $subject, $body);
 }
+
 ?>
